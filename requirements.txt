@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+paho-mqtt
+python-multipart
+pydantic
+pydantic-settings
+typing-extensions
+httpx
+aiofiles
+python-dateutil
