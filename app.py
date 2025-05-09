@@ -152,6 +152,33 @@ def verify_otp():
     
     abort(400, description="Incorrect OTP code")
 
+@app.route('/sensor/recent', methods=['GET'])
+def get_recent_sensor_data():
+    try:
+        limit = int(request.args.get('limit', 10))
+        recent_data = SensorDataModel.query.order_by(SensorDataModel.timestamp.desc()).limit(limit).all()
+
+        result = []
+        for item in recent_data:
+            result.append({
+                "id": item.id,
+                "date": item.date,
+                "time": item.time,
+                "global_active_power": item.global_active_power,
+                "global_reactive_power": item.global_reactive_power,
+                "voltage": item.voltage,
+                "global_intensity": item.global_intensity,
+                "sub_metering_1": item.sub_metering_1,
+                "sub_metering_2": item.sub_metering_2,
+                "sub_metering_3": item.sub_metering_3,
+                "timestamp": item.timestamp.strftime("%Y-%m-%d %H:%M:%S")
+            })
+
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route('/user/login', methods=['POST'])
 def login_user():
     data = request.get_json()

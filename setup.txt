@@ -1,16 +1,8 @@
-fastapi==0.110.0
-uvicorn[standard]==0.29.0
-pydantic==2.6.4
-python-multipart==0.0.9
-
-# MongoDB Async
-motor==3.4.0
-pymongo==4.6.3
-
-# Machine Learning + LSTM model
-numpy==1.26.4
-joblib==1.4.2
-tensorflow==2.15.0
-keras==2.15.0
-# CORS
-aiofiles==23.2.1
+Flask>=2.0.0
+flask-cors
+flask-sqlalchemy
+joblib
+numpy
+tensorflow
+keras
+python-dotenv
